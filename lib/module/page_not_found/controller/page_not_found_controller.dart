@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cozy/state_util.dart';
-import '../view/home_view.dart';
+import '../view/page_not_found_view.dart';
 
-class HomeController extends State<HomeView> implements MvcController {
-  static late HomeController instance;
-  late HomeView view;
+class PageNotFoundController extends State<PageNotFoundView> implements MvcController {
+  static late PageNotFoundController instance;
+  late PageNotFoundView view;
 
   @override
   void initState() {

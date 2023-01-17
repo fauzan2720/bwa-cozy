@@ -3,7 +3,6 @@ import '/core.dart';
 
 void showConfirmation({
   required void Function() onPressed,
-  Color? color,
   String? message,
 }) async {
   bool confirm = false;
@@ -21,24 +20,27 @@ void showConfirmation({
           ),
         ),
         actions: <Widget>[
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.grey[600],
-            ),
+          TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text("Tidak"),
+            child: Text(
+              "Batal",
+              style: TextStyle(color: primaryColor),
+            ),
           ),
-          ElevatedButton(
+          TextButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: color ?? Colors.red[700],
+              backgroundColor: primaryColor,
             ),
             onPressed: () {
               confirm = true;
               Navigator.pop(context);
             },
-            child: const Text("Iya"),
+            child: const Text(
+              "Hubungi",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       );

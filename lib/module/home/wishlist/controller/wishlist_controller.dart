@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cozy/state_util.dart';
-import '../view/home_view.dart';
+import '../view/wishlist_view.dart';
 
-class HomeController extends State<HomeView> implements MvcController {
-  static late HomeController instance;
-  late HomeView view;
+class WishlistController extends State<WishlistView> implements MvcController {
+  static late WishlistController instance;
+  late WishlistView view;
 
   @override
   void initState() {

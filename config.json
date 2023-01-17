@@ -3,6 +3,9 @@
     "modules": [
         "splash_screen",
         "home/main_navigation",
-        "home/home"
+        "home/home",
+        "home/detail_page",
+        "home/wishlist",
+        "page_not_found"
     ]
 }

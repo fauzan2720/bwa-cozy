@@ -1,14 +1,16 @@
-import 'package:cozy/shared/widget/card/city_card.dart';
-import 'package:cozy/shared/widget/card/space_card.dart';
-import 'package:cozy/shared/widget/card/tips_card.dart';
+import 'package:cozy/provider/space_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cozy/core.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
   Widget build(context, HomeController controller) {
     controller.view = this;
+
+    var spaceProvider = Provider.of<SpaceProvider>(context);
 
     return Scaffold(
       backgroundColor: whiteColor,
@@ -62,11 +64,13 @@ class HomeView extends StatefulWidget {
                   SizedBox(
                     width: horizontalSize - 10.0,
                   ),
-                  const CityCard(),
-                  const CityCard(isPopular: true),
-                  const CityCard(),
-                  const CityCard(isPopular: true),
-                  const CityCard(),
+                  CityCard(imageUrl: imageJakarta, city: "Jakarta"),
+                  CityCard(
+                      imageUrl: imageBandung, city: "Bandung", isPopular: true),
+                  CityCard(imageUrl: imageSurabaya, city: "Surabaya"),
+                  CityCard(imageUrl: imagePalembang, city: "Palembang"),
+                  CityCard(imageUrl: imageAceh, city: "Aceh", isPopular: true),
+                  CityCard(imageUrl: imageBogor, city: "Bogor"),
                   SizedBox(
                     width: horizontalSize - 10.0,
                   ),
@@ -85,9 +89,26 @@ class HomeView extends StatefulWidget {
                 ),
               ),
             ),
-            const SpaceCard(),
-            const SpaceCard(),
-            const SpaceCard(),
+            FutureBuilder(
+              future: spaceProvider.getRecommendedSpace(),
+              builder: (context, snapshot) {
+                List<SpaceModel>? items = snapshot.data;
+
+                if (snapshot.hasData) {
+                  return Column(
+                    children: items!.map((e) => SpaceCard(e)).toList(),
+                  );
+                }
+
+                return Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: SpinKitPouringHourGlass(
+                    color: primaryColor,
+                    duration: const Duration(milliseconds: 1200),
+                  ),
+                );
+              },
+            ),
             const SizedBox(
               height: 15.0,
             ),

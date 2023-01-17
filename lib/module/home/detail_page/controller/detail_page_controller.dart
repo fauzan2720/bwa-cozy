@@ -1,10 +1,12 @@
+import 'package:cozy/core.dart';
 import 'package:flutter/material.dart';
-import 'package:cozy/state_util.dart';
-import '../view/home_view.dart';
 
-class HomeController extends State<HomeView> implements MvcController {
-  static late HomeController instance;
-  late HomeView view;
+class DetailPageController extends State<DetailPageView>
+    implements MvcController {
+  static late DetailPageController instance;
+  late DetailPageView view;
+
+  refresh() => setState(() {});
 
   @override
   void initState() {

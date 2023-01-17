@@ -1,5 +1,3 @@
-import 'package:cozy/module/home/main_navigation/widget/bottom_nav_item.dart';
-import 'package:cozy/shared/util/style/icon.dart';
 import 'package:flutter/material.dart';
 import 'package:cozy/core.dart';
 
@@ -10,7 +8,7 @@ class MainNavigationView extends StatefulWidget {
     controller.view = this;
 
     return Scaffold(
-      body: const HomeView(),
+      body: controller.handleBody(),
       floatingActionButton: Container(
         height: 65.0,
         margin: EdgeInsets.fromLTRB(horizontalSize, 0.0, horizontalSize, 10.0),
@@ -30,20 +28,24 @@ class MainNavigationView extends StatefulWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             BottomNavItem(
+              index: 0,
               imageUrl: iconHome,
-              isActive: true,
+              isActive: controller.currentIndex == 0 ? true : false,
             ),
             BottomNavItem(
+              index: 1,
               imageUrl: iconMail,
-              isActive: false,
+              isActive: controller.currentIndex == 1 ? true : false,
             ),
             BottomNavItem(
+              index: 2,
               imageUrl: iconCard,
-              isActive: false,
+              isActive: controller.currentIndex == 2 ? true : false,
             ),
             BottomNavItem(
+              index: 3,
               imageUrl: iconLove,
-              isActive: false,
+              isActive: controller.currentIndex == 3 ? true : false,
             ),
           ],
         ),

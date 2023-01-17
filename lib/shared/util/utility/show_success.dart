@@ -12,7 +12,7 @@ void showSuccess({String? message}) {
         color: Colors.greenAccent[700],
         child: Text(
           "Oke",
-          style: TextStyle(color: secondaryColor, fontSize: 14),
+          style: TextStyle(color: whiteColor, fontSize: 14),
         ),
         onPressed: () => Get.back(),
       )

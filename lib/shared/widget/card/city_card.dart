@@ -2,7 +2,14 @@ import 'package:cozy/core.dart';
 import 'package:flutter/material.dart';
 
 class CityCard extends StatelessWidget {
-  const CityCard({super.key, this.isPopular = false});
+  const CityCard({
+    super.key,
+    required this.imageUrl,
+    required this.city,
+    this.isPopular = false,
+  });
+  final String imageUrl;
+  final String city;
   final bool isPopular;
 
   @override
@@ -22,8 +29,8 @@ class CityCard extends StatelessWidget {
                 BorderRadius.vertical(top: Radius.circular(radiusPrimarySize)),
             child: Stack(
               children: [
-                Image.network(
-                  "https://i.ibb.co/S32HNjD/no-image.jpg",
+                Image.asset(
+                  imageUrl,
                   width: 120.0,
                   height: 102.0,
                   fit: BoxFit.cover,
@@ -55,7 +62,7 @@ class CityCard extends StatelessWidget {
             height: 11.0,
           ),
           Text(
-            "Jakarta",
+            city,
             style: TextStyle(
               fontSize: 16.0,
               fontWeight: medium,
